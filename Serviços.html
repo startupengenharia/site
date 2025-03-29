@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    
+    <meta name="theme-color" content="#074faf">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Serviços</title>
+    <link rel="icon" type="assents/png" href="Fotos/Logotipo da Startup.jpg">
+    <style>
+        /* Estilo geral */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #074faf;
+            color: #fff;
+            overflow-x: hidden;
+            background: url("Plano\ de\ Fundo\ Escuro.png") no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        /* Estilo do menu lateral */
+        .menu {
+            position: fixed;
+            top: 0;
+            right: -250px;
+            display: flex;
+            flex-direction: column;
+            background-color: #333;
+            width: 250px;
+            height: 240px;
+            transition: transform 0.3s ease-in-out;
+            z-index: 1000;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            padding: 20px;
+            border-bottom: 1px solid #444;
+            text-align: center;
+        }
+
+        .menu a:hover {
+            background-color: #555;
+        }
+
+        .menu.open {
+            transform: translateX(-110%);
+        }
+
+        /* Botão de menu */
+        .menu-button {
+            position: fixed;
+            top: 20px; 
+            right: 20px;
+            background-color: #fff;
+            color: #000;
+            border: none;
+            font-size: 30px;
+            cursor: pointer;
+            padding: 15px;
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            z-index: 1001;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .menu-button:hover {
+            background-color: #074faf;
+        }
+
+        /* Ícone dentro do botão */
+        .menu-button::before {
+            font-size: 30px;
+        }
+
+        /* Banner */
+        .banner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 150px; /* Tamanho reduzido */
+            position: relative;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.2);
+            width: 110%;
+            margin-left: -5%;
+            margin-bottom: 20px;
+        }
+
+        .banner h3 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        /* Cards de serviços */
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            flex-wrap: wrap;
+            padding: 0 10px;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 220px; /* Diminuído para 220px */
+            height: 240px; /* Diminuído para 240px */
+            border: 3px solid #074faf;
+            box-shadow: 0px 0px 15px #074faf, 0px 0px 15px inset;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            background-color: #fff;
+            color: #333;
+        }
+
+        h1 {
+            margin-top: 10px;
+            color: #074faf;
+            font-size: 18px; /* Ajustado para 18px */
+        }
+
+        p {
+            font-size: 12px; /* Tamanho reduzido */
+            margin-top: 5px;
+            color: #000;
+            font-weight: bold;
+        }
+
+        /* Rodapé */
+        .footer {
+            background-color: #006494;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+        }
+
+        .footer h2 {
+            margin: 0 0 10px;
+            color: white;
+        }
+
+        .footer p {
+            margin: 5px 0;
+            color: white;
+        }
+
+        .footer .icon {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 10px 0;
+        }
+
+        .footer .icon a {
+            color: white;
+            text-decoration: none;
+            font-size: 30px;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .footer .icon a:hover {
+            color: #00acee;
+            transform: scale(1.2);
+        }
+
+        /* Responsividade para telas menores */
+        @media (max-width: 768px) {
+            .menu {
+                width: 70%;
+                transform: translateX(100%);
+            }
+
+            .menu.open {
+                transform: translateX(0);
+            }
+
+            .menu-button {
+                font-size: 28px;
+                width: 50px;
+                height: 50px;
+            }
+
+            /* Banner */
+            .banner {
+                height: 150px;
+            }
+
+            .banner h3 {
+                font-size: 20px;
+            }
+
+            .cards-container {
+                flex-direction: column;
+            }
+
+            .card {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+
+        /* Responsividade para telas pequenas */
+        @media (max-width: 480px) {
+            .banner {
+                height: 120px;
+            }
+
+            .card {
+                width: 100%;
+                height: auto;
+            }
+
+            .footer {
+                font-size: 14px;
+                padding: 15px 10px;
+            }
+
+            .footer .icon a {
+                font-size: 24px;
+            }
+        }
+
+        /* Botão WhatsApp - Ajustado para ficar no canto direito da página */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 20px; /* Mantido no final da tela */
+            right: 20px; /* Posiciona o botão à direita */
+            transform: translateX(0); /* Garante que o botão se alinhe à direita */
+            background-color: #25d366;
+            color: white;
+            border: none;
+            font-size: 30px;
+            cursor: pointer;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #128c7e;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Botão de menu -->
+    <button class="menu-button" onclick="toggleMenu()">☰</button>
+
+    <!-- Menu lateral -->
+    <div class="menu" id="menu">
+        <a href="index.html" class="menu-item">Página Inicial</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd_BPATzVVhaPvjGJ53ymojZj-X7Puuxh6j9TXzZwWJshtj6Q/viewform?usp=sharing" class="menu-item">Processo Seletivo</a>
+        <a href="Serviços.html" class="menu-item">Serviços</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdjLAUynULDmmGYyscSywrVTk2MzKTtcxPfKyOuxZLjHOqUFQ/viewform?usp=sharing" class="menu-item">Suporte</a>
+    </div>
+
+    <!-- Banner -->
+    <div class="banner">
+        <h3>Nossos Serviços</h3>
+    </div>
+
+    <!-- Cards de serviços -->
+    <div class="cards-container">
+        <div class="card">
+            <h1>Consultoria em Engenharia</h1>
+            <p>Oferecemos consultoria especializada para diversos ramos da engenharia, ajudando a otimizar processos e aumentar a eficiência.</p>
+        </div>
+        <div class="card">
+            <h1>Desenvolvimento de Projetos</h1>
+            <p>Desenvolvemos projetos personalizados que atendem às necessidades específicas de cada cliente, com foco em inovação e sustentabilidade.</p>
+        </div>
+        <div class="card">
+            <h1>Gerenciamento de Obras</h1>
+            <p>Gerenciamos obras de construção civil, garantindo que sejam concluídas dentro do prazo e do orçamento, com alta qualidade.</p>
+        </div>
+        <div class="card">
+            <h1>Treinamentos e Workshops</h1>
+            <p>Oferecemos treinamentos e workshops para capacitar profissionais e equipes, abordando as últimas tendências e tecnologias do mercado.</p>
+        </div>
+        <div class="card">
+            <h1>Engenharia Civil</h1>
+            <p>Planejamento, projeto e supervisão de obras civis, incluindo construção de estradas, pontes, túneis, redes de saneamento e obras de infraestrutura em geral.</p>
+        </div>
+        <div class="card">
+            <h1>Projetos Estruturais</h1>
+            <p>Desenvolvimento de projetos estruturais para edifícios residenciais, comerciais e industriais. Inclui análise de cargas, dimensionamento de elementos estruturais e uso de softwares avançados para modelagem e simulação.</p>
+        </div>
+        <div class="card">
+            <h1>Engenharia Elétrica</h1>
+            <p>Projeto e execução de sistemas elétricos para diversas aplicações. Isso inclui redes de distribuição, instalações prediais, sistemas de energia renovável (solar, eólica), automação industrial e eficiência energética.</p>
+        </div>
+        <div class="card">
+            <h1>Gestão de Projetos de Engenharia</h1>
+            <p>Planejamento, execução e monitoramento de projetos de engenharia, garantindo que os objetivos sejam alcançados dentro do prazo e orçamento estabelecidos.</p>
+        </div>
+        <div class="card">
+            <h1>Desenvolvimento de Software para Engenharia</h1>
+            <p>Criação de soluções de software personalizadas para atender às necessidades específicas de engenharia, como sistemas de gestão de manutenção, softwares de simulação, ferramentas de CAD/CAM, e plataformas de colaboração.</p>
+        </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <h2>Contato</h2>
+        <div class="icon">
+            <a href="https://www.instagram.com/startupeng.fho?igsh=MXMwNWRiZWswcXB4aQ==" target="_blank">
+                <i class="fab fa-instagram" title="Instagram"></i>
+            </a>
+            <a href="mailto:contato@startupengenharia.com.br">
+                <i class="fas fa-envelope" title="Email"></i>
+            </a>
+        </div>
+        <p>&copy; 2025 Startup! Engenharia. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Botão WhatsApp -->
+    <button class="whatsapp-btn" onclick="window.open('https://wa.me/5511999999999', '_blank')">
+        <i class="fab fa-whatsapp"></i>
+    </button>
+
+    <script src="scrit.js" defer></script>
+</body>
+</html>

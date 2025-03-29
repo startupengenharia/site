@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#074faf">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Formulário de Suporte</title>
+    <link rel="icon" type="assents/png" href="cabesalho.png">
+    <style>
+        /* Estilo geral */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            
+            justify-content: center; /* Centraliza horizontalmente */
+            color: #e4d4d4;
+            overflow-x: hidden;
+            background: linear-gradient(#2e5180, #000);
+            align-items: center; /* Centraliza verticalmente */
+            height: 100vh; /* Ocupa a tela inteira */
+             margin: 0;
+        }
+
+         /* Estilo do menu lateral */
+         .menu {
+            position: fixed;
+            top: 0;
+            right: -250px;
+            display: flex;
+            flex-direction: column;
+            background-color: #333;
+            width: 250px;
+            height: 240px;
+            transition: transform 0.3s ease-in-out;
+            z-index: 1000;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            padding: 20px;
+            border-bottom: 1px solid #444;
+            text-align: center;
+        }
+
+        .menu a:hover {
+            background-color: #555;
+        }
+
+        .menu.open {
+            transform: translateX(-250px);
+        }
+
+        /* Botão de menu */
+        .menu-button {
+    position: fixed;
+    top: 20px; 
+    right: 20px;
+    background-color: #fff;
+    color: #000;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    padding: 15px;
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1001;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+        .menu-button:hover {
+            background-color: #eff3f8;
+        }
+        /* Estilo para a classe ativa */
+.menu-item.active {
+    background-color: #f2f7f6f6;  /* Cor de fundo para destacar */
+    color: #333;  /* Cor do texto quando ativo */
+}
+
+/* Estilo normal para os itens */
+.menu-item {
+    text-decoration: none;
+    color: #000;
+    padding: 10px;
+    display: block;
+}
+
+.menu-item:hover {
+    background-color: #ddd;
+}
+
+
+        /* Ícone dentro do botão */
+        .menu-button::before {
+            font-size: 30px;
+        }
+
+       /* Banner */
+.banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 450px; /* Altura reduzida */
+    position: relative;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 110%; /* Aumenta a largura ligeiramente */
+    margin-left: -5%; /* Centraliza o banner */
+    margin-bottom: 20px;
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.banner h3,
+.banner p {
+    z-index: 2;
+    position: relative;
+    text-align: center;
+}
+
+.banner h3 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+        /* Estilo do formulário */
+        .container {
+            background: linear-gradient(to bottom, rgba(65, 103, 179, 0.8), rgba(158, 131, 131, 0.8));
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 0 auto 50px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #ddc5c5;
+        }
+
+        .formgroup {
+            margin-bottom: 15px;
+        }
+
+        .formgroup label {
+            display: block;
+            margin-bottom: 5px;
+            color: #ecd4d4;
+        }
+
+        .formgroup input, .formgroup select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .formgroup input:focus, .formgroup select:focus, textarea:focus {
+            border-color: #ebeff5;
+            outline: none;
+        }
+
+        textarea {
+            height: 100px;
+            margin: 5px 0 15px;
+            font-size: 14px;
+        }
+
+        button {
+    background-color: transparent;
+    color: #ffffff;
+    padding: 10px 15px;
+    border: 3px solid #e7e9ec;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    transition: all 0.3s ease; /* Transição suave */
+}
+
+button:hover {
+    background-color: #074faf;
+    color: #fff;
+    border-color: #fff;
+    transform: scale(1.05); /* Leve aumento de tamanho */
+}
+
+button:active {
+    transform: scale(1); /* Restaura o tamanho ao ser pressionado */
+}
+/* Media Queries para telas pequenas */
+@media screen and (max-width: 768px) {
+    /* Ajusta o menu para telas menores */
+    .menu {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        
+    
+transform: translateX(100%);
+    }
+
+    .menu.open {
+        transform: translateX(0);
+    }
+
+    /* Ajusta a largura do formulário */
+    .container {
+        padding: 20px;
+        margin: 20px;
+    }
+
+    /* Ajusta o botão do menu */
+    .menu-button {
+        top: 15px;
+        right: 15px;
+        width: 50px;
+        height: 50px;
+        padding: 10px;
+        font-size: 25px;
+    }
+
+    /* Ajusta a altura do banner */
+    .banner {
+        height: 350px;
+    }
+
+    .banner h3 {
+        font-size: 28px;
+    }
+}
+
+/* Media Queries para telas muito pequenas (celulares em modo retrato) */
+@media screen and (max-width: 480px) {
+    h2 {
+        font-size: 20px;
+    }
+
+    .formgroup input, .formgroup select, textarea {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    button {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    
+    }
+.menu-button {
+        top: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+    .footer {
+    background-color: #222;  /* Cor de fundo */
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;  /* Alinha os itens verticalmente */
+    justify-content: center;  /* Centraliza verticalmente */
+    align-items: center;  /* Centraliza horizontalmente */
+    height: 200px; /* Define uma altura para ocupar mais espaço */
+}
+
+/* Centralizar os ícones */
+.icon {
+    display: flex;
+    gap: 15px;  /* Espaçamento entre os ícones */
+    margin-top: 10px;
+}
+
+.icon a {
+    color: white;
+    font-size: 24px;
+    transition: 0.3s;
+}
+
+.icon a:hover {
+    color: #074faf; /* Muda de cor ao passar o mouse */
+}
+
+
+        
+    </style>
+</head>
+<body>
+    <!-- Botão de menu -->
+    <button class="menu-button" onclick="toggleMenu()">☰</button>
+
+    <!-- Menu lateral -->
+    <div class="menu" id="menu">
+        <a href="site.html" class="menu-item">Página Inicial</a>
+        <a href="https://forms.gle/CfewgkAi9VyNtbca6" class="menu-item">Processo Seletivo</a>
+        <a href="Serviços.html" class="menu-item">Serviços</a>
+        <a href="Suporte.html" class="menu-item">Suporte</a>
+        
+        <script src="scrit.js" defer></script>
+    </div>
+
+    <!-- Banner -->
+   
+
+    <!-- Formulário de Suporte -->
+     
+    <div class="container">
+        <script src="forsuporte.js" defer></script>
+
+        <form id="meuformulario">
+        <h2>Entre em Contato Conosco</h2>
+       
+        <strong style="color: rgb(219, 209, 209);"><p></p></strong>
+            <div class="formgroup">
+                <label for="nome"><strong>Nome:</strong></label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+            <div class="formgroup">
+                <label for="number"><strong>whatsapp:</strong></label>
+                <input type="number" id="nome" name="number" required>
+            </div>
+            <div class="formgroup">
+                <label for="email"><strong>Email:</strong></label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="formgroup">
+                <label for="mensagem"><strong>Mensagem:</strong></label>
+                <textarea id="mensagem" name="mensagem" placeholder="Descreva o problema ou dúvida" required></textarea>
+            </div>
+             <button type="button" onclick="enviarFormulario()">enviar</button>
+        </form>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <h2>Contato</h2>
+        <div class="icon">
+            <a href="https://www.instagram.com/startupeng.fho?igsh=MXMwNWRiZWswcXB4aQ==" target="_blank">
+                <i class="fab fa-instagram" title="Instagram"></i>
+            </a>
+            <a href="mailto:contato@startupengenharia.com.br">
+                <i class="fas fa-envelope" title="Email"></i>
+            </a>
+        </div>
+        <p>&copy; 2025 Startup! Engenharia. Todos os direitos reservados.</p>
+    </footer>
+    </div>
+
+<!-- Importação do script no final para melhor desempenho -->
+<script src="scrit.js" defer></script>
+
+</body>
+</html>

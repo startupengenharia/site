@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>startup engenharia</title>
+    <style>
+          body {
+            background-image: url("Plano\ de\ Fundo\ Escuro.png");
+            background-size: cover; /* Ajusta a imagem para cobrir toda a tela */
+            background-position: center; /* Centraliza a imagem */
+            background-repeat: no-repeat; /* Evita repetição da imagem */
+            height: 100vh; /* Ocupa toda a altura da tela */
+            margin: 0;
+        }
+        
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .row .form-group {
+            width: 48%;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap; /* Permite quebra em telas menores */
+            gap: 15px;
+         }
+
+        .row .form-group {
+          width: 100%; /* Ocupa toda a largura em telas menores */
+         }
+         @media (min-width: 600px) {
+    .row .form-group {
+        width: 48%;
+    }
+}
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Formulário de Inscrição</h2>
+        <form id="redirectForm">
+            
+        <form action="#" method="POST" enctype="multipart/form-data">
+            
+            <div class="row">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefone">WhatsApp</label>
+                    <input type="tel" id="telefone" name="telefone" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="rua">Rua</label>
+                    <input type="text" id="rua" name="rua" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <label for="numero">Número</label>
+                    <input type="number" id="numero" name="numero" required>
+                </div>
+                <div class="form-group">
+                    <label for="cep">CEP</label>
+                    <input type="text" id="cep" name="cep" required pattern="\d{5}-?\d{3}" title="Formato esperado: 00000-000 ou 00000000">
+
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <label for="cidade">Cidade</label>
+                    <input type="text" id="cidade" name="cidade" required>
+                </div>
+                <div class="form-group">
+                    <label for="curso">Curso</label>
+                    <select id="curso" name="curso" required>
+                        <option value="">Selecione o curso</option>  
+                        <option value="engenharia_civil">Engenharia Civil</option>
+                        <option value="computacao">Engenharia Computação</option>
+                        <option value="producao">Engenharia Produção</option>
+                        <option value="eletrica">Engenharia Elétrica</option>
+                        <option value="quimica">Engenharia Química</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="semestre">Semestre</label>
+                <select id="semestre" name="semestre" required>
+                    <option value="" style="font-weight: bold;">Selecione o semestre</option>
+                    <option value="1">1ºsemestre</option>
+                    <option value="2">2ºsemestre</option>
+                    <option value="3">3ºsemestre</option>
+                    <option value="4">4ºsemestre</option>
+                    <option value="5">5ºsemestre</option>
+                    <option value="6">6ºsemestre</option>
+                    <option value="7">7ºsemestre</option>
+                    <option value="8">8ºsemestre</option>
+                    <option value="9">9ºsemestre</option>
+                    <option value="10">10ºsemestre</option>
+                    <option value="11">11ºsemestre</option>
+                    <option value="12">12ºsemestre</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="curriculo">Currículo (PDF ou DOC)</label>
+                <input type="file" id="curriculo" name="curriculo" accept=".pdf, .doc, .docx" required>
+            </div>
+
+            <button type="submit">enviar</button>
+        </form>
+        <script>
+        
+        </script>
+    
+    </div>
+    <script src="formulario.js" defer></script>
+
+</body>
+</html>
